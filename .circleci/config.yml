@@ -12,6 +12,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Set yarn config
+          command: |
+            yarn config set @taskrabbit:registry https://npm.pkg.github.com
+            yarn config set //npm.pkg.github.com/:_authToken ${GITHUB_TOKEN}
+      - run:
           name: Install dependencies
           command: yarn install
       - run:
